@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For You ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+    color:white;
+    text-align:center;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+.start{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.big-btn{
+    padding:22px 32px;
+    font-size:24px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#d6336c;
+    font-weight:bold;
+    box-shadow:0 0 25px rgba(255,255,255,0.8);
+    cursor:pointer;
+}
+
+.main{
+    display:none;
+    padding:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.2);
+    max-width:500px;
+    margin:auto;
+    padding:25px;
+    border-radius:25px;
+    box-shadow:0 0 25px rgba(255,255,255,0.4);
+    backdrop-filter:blur(8px);
+}
+
+img{
+    width:220px;
+    border-radius:25px;
+    border:4px solid white;
+}
+
+h1{
+    font-size:32px;
+}
+
+.button{
+    display:block;
+    margin:15px auto;
+    padding:15px 22px;
+    background:white;
+    color:#d6336c;
+    text-decoration:none;
+    border-radius:18px;
+    font-weight:bold;
+    max-width:270px;
+    border:none;
+    cursor:pointer;
+}
+
+.section{
+    display:none;
+    margin-top:20px;
+    background:rgba(255,255,255,0.25);
+    padding:18px;
+    border-radius:18px;
+    color:white;
+}
+
+.heart{
+    position:fixed;
+    top:-20px;
+    color:white;
+    animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="start" id="start">
+    <h1>I have a question...</h1>
+    <button class="big-btn" onclick="openSite()">The Best Person Ever ❤️</button>
+</div>
+
+<div class="main" id="main">
+    <div class="card">
+        <img src="maryam.jpeg" alt="Maryam Photo">
+
+        <h1>This is Maryam ❤️</h1>
+
+        <p>The most beautiful person in my life.</p>
+
+        <button class="button" onclick="showSection('memories')">📸 Our Memories</button>
+        <button class="button" onclick="showSection('love')">💗 Why I Love You</button>
+        <button class="button" onclick="showSection('message')">💌 A Message For You</button>
+
+        <div class="section" id="memories">
+            <h2>Our Memories</h2>
+            <p>Every moment with you is special, and I hope we make a million more memories together.</p>
+        </div>
+
+        <div class="section" id="love">
+            <h2>Why I Love You</h2>
+            <p>I love your smile, your heart, your energy, and the way you make my life better just by being in it.</p>
+        </div>
+
+        <div class="section" id="message">
+            <h2>My Message</h2>
+            <p>Maryam, you are not just my girlfriend. You are my favorite person, my peace, and my happiness. I love you so much ❤️</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function openSite(){
+    document.getElementById("start").style.display="none";
+    document.getElementById("main").style.display="block";
+    createHearts();
+}
+
+function showSection(id){
+    document.getElementById("memories").style.display="none";
+    document.getElementById("love").style.display="none";
+    document.getElementById("message").style.display="none";
+    document.getElementById(id).style.display="block";
+}
+
+function createHearts(){
+    setInterval(function(){
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(20+Math.random()*20)+"px";
+        document.body.appendChild(heart);
+
+        setTimeout(function(){
+            heart.remove();
+        },5000);
+    },300);
+}
+</script>
+
+</body>
+</html>
